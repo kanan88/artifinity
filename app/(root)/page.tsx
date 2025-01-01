@@ -1,3 +1,13 @@
-export default function Home() {
-  return <div>Home</div>;
-}
+import { UserButton } from "@clerk/nextjs";
+
+const Home = () => {
+  return (
+    <div>
+      <p>Home</p>
+
+      <UserButton />
+    </div>
+  );
+};
+
+export default Home;
