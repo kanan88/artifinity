@@ -29,6 +29,7 @@ import { Button } from "../ui/button";
 import { updateCredits } from "@/lib/actions/user.actions";
 import { addImage, updateImage } from "@/lib/actions/image.actions";
 import { useRouter } from "next/navigation";
+import MediaUploader from "./MediaUploader";
 
 export const formSchema = z.object({
   title: z.string(),
@@ -170,7 +171,7 @@ const TransformationForm = ({
           [fieldName === "prompt" ? "prompt" : "to"]: value,
         },
       }));
-    }, 1000)();
+    }, 1000);
 
     return onChangeField(value);
   };
@@ -282,6 +283,23 @@ const TransformationForm = ({
             )}
           </div>
         )}
+
+        <div className="media-uploader-field">
+          <CustomField
+            control={form.control}
+            name="publicId"
+            className="flex size-full flex-col"
+            render={({ field }) => (
+              <MediaUploader
+                onValueChange={field.onChange}
+                setImage={setImage}
+                publicId={field.value}
+                image={image}
+                type={type}
+              />
+            )}
+          />
+        </div>
 
         <div className="flex flex-col gap-4">
           <Button
