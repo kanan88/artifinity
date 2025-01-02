@@ -30,6 +30,7 @@ import { updateCredits } from "@/lib/actions/user.actions";
 import { addImage, updateImage } from "@/lib/actions/image.actions";
 import { useRouter } from "next/navigation";
 import MediaUploader from "./MediaUploader";
+import TransformedImage from "./TransformedImage";
 
 export const formSchema = z.object({
   title: z.string(),
@@ -299,6 +300,8 @@ const TransformationForm = ({
               />
             )}
           />
+
+          <TransformedImage />
         </div>
 
         <div className="flex flex-col gap-4">
