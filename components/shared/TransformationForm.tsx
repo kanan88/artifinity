@@ -78,7 +78,7 @@ const TransformationForm = ({
     setIsSubmitting(true);
 
     if (data || image) {
-      const transformationUrl = getCldImageUrl({
+      const transformationURL = getCldImageUrl({
         width: image?.width,
         height: image?.height,
         src: image?.publicId,
@@ -93,7 +93,7 @@ const TransformationForm = ({
         height: image?.height,
         config: transformationConfig,
         secureURL: image?.secureURL,
-        transformationURL: transformationUrl,
+        transformationURL: transformationURL,
         aspectRatio: values.aspectRatio,
         prompt: values.prompt,
         color: values.color,
@@ -301,7 +301,14 @@ const TransformationForm = ({
             )}
           />
 
-          <TransformedImage />
+          <TransformedImage
+            image={image}
+            type={type}
+            title={form.getValues().title}
+            isTransforming={isTransforming}
+            setIsTransforming={setIsTransforming}
+            transformationConfig={transformationConfig}
+          />
         </div>
 
         <div className="flex flex-col gap-4">
